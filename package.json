@@ -1,22 +1,21 @@
 {
-  "name": "backend-e-commerce-tne",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Backend for TNE e-commerce",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dowesw/backend-e-commerce-tne.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dowesw/backend-e-commerce-tne/issues"
-  },
-  "homepage": "https://github.com/dowesw/backend-e-commerce-tne#readme",
   "dependencies": {
-    "multer": "^1.4.5-lts.1"
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.1",
+    "mongoose-unique-validator": "^3.0.0",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15"
   }
 }

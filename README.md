@@ -1,11 +1,17 @@
 "# backend-e-commerce-tne" 
 
 # librairy
-## json-server :
+## node
 https://www.npmjs.com/package/json-server#getting-started
-## multer :
+## express
 https://www.npmjs.com/package/multer
+## mongodb
 
 # usage 
-## run :
-json-server db.json --routes routes.json
+## run
+nodemon serve
+## test
+node test
+
+# tools
+## postman
