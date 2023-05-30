@@ -2,10 +2,11 @@
 
 # librairy
 ## node
-https://www.npmjs.com/package/json-server#getting-started
+https://nodejs.org/en/docs
 ## express
-https://www.npmjs.com/package/multer
+https://expressjs.com/
 ## mongodb
+https://www.mongodb.com/
 
 # usage 
 ## run
@@ -15,3 +16,4 @@ node test
 
 # tools
 ## postman
+https://www.postman.com/
