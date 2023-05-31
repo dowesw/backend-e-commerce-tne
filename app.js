@@ -5,11 +5,11 @@ const app = express();
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
+const auth = require('./middleware/auth');
 const path = require('path');
 
 require('dotenv').config();
-
-const password = 'Meg271089';
 
 mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`, {
         useNewUrlParser: true,
@@ -31,8 +31,9 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use('/api/sauces', sauceRoutes);
-app.use('/api/auth', userRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/sauces', auth, sauceRoutes);
+app.use('/api/users', auth, userRoutes);
 
 
 

@@ -1,0 +1,24 @@
+# Inscription
+1- En tant que visiteur je veux accéder à la page d'inscription afin de créer mon compte. 
+    La page d'inscription s'ouvre si je clique sur le lien / bouton prévu pour cela sinon je reçois une erreur 404.
+2- En tant que visiteur je veux accéder à la page d'inscription pour créer mon compte afin de pouvoir commander des produits. 
+    Mon compte est crée si je remplis correctement mes informations sinon je reçois un message d'erreur.
+
+# Connexion
+1- En tant que non connecté je veux accéder à la page de connexion afin de me connecter.
+    La page de conneion s'ouvre si je clique sur le lien / bouton prévu pour cela sinon je reçois une erreur 404.
+2- En tant que non connecté je veux accéder à la page de connexion pour me connecter afin d'accéder à mon dashboard.
+    Mon dashboard s'ouvre si je remplis correctement mon email et mot de passe sinon je reçcois un message d'erreur.
+
+# Mot de passe oublié
+1- En tant que utilisateur non connecté je veux accéder à la page de reinitialisation de mon mot de passe afin de reinitialiser mon mot de passe.
+    La page de reinitialisation s'ouvre si je clique sur le lien / bouton prévu pour cela sur la page de connexion sinon je reçois une erreur 404.
+2- En tant que utilisateur non connecté je veux accéder à la page de reinitialisation de mon mot de passe afin de reinitialiser mon mot de passe.
+    La page de reinitialisation s'ouvre si je clique sur le lien / bouton prévu pour cela et que mon email correspond à un compte sinon je reçois une erreur 404.
+
+# Supprimer un compte
+1- En tant que utilisateur connecté
+
+# Modifier un compte
+
+# Activer / Désactiver un compte
