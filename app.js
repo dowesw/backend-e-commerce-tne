@@ -3,7 +3,7 @@ const mongoose = require('mongoose');;
 const bodyParser = require('body-parser')
 const app = express();
 
-const sauceRoutes = require('./routes/sauce');
+const produitRoutes = require('./routes/produit');
 const userRoutes = require('./routes/user');
 const authRoutes = require('./routes/auth');
 const auth = require('./middleware/auth');
@@ -22,8 +22,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -32,7 +30,7 @@ app.use((req, res, next) => {
 });
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', authRoutes);
-app.use('/api/sauces', auth, sauceRoutes);
+app.use('/api/produits', auth, produitRoutes);
 app.use('/api/users', auth, userRoutes);
 
 

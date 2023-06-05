@@ -7,7 +7,9 @@ const userSchema = mongoose.Schema({
     nom: { type: String, required: true },
     photo: { type: String, required: true },
     active: { type: Boolean, default: true },
-    admin: { type: Boolean, default: false }
+    admin: { type: Boolean, default: false },
+    dateSave: { type: Date, default: mongoose.now() },
+    dateUpdate: { type: Date, default: mongoose.now() },
 });
 
 userSchema.plugin(uniqueValidator);
