@@ -1,6 +1,9 @@
 const Commentaire = {
+    _id: '',
     userId: '',
-    commentaire: ''
+    commentaire: '',
+    dateSave: '',
+    dateUpdate: ''
 }
 
 module.exports = Commentaire;

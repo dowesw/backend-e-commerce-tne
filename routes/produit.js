@@ -11,4 +11,5 @@ router.post('/', auth, multer, controller.create);
 router.put('/:id', auth, multer, controller.update);
 router.delete('/:id', auth, controller.delete);
 router.patch('/:id/like', auth, controller.likeOrNot)
+router.post('/:id/commented', auth, controller.commented)
 module.exports = router;

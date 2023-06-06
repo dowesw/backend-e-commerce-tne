@@ -1,4 +1,5 @@
 const http = require('http');
+const mongoose = require('mongoose');;
 const app = require('./app');
 
 const normalizePort = val => {
@@ -43,5 +44,15 @@ server.on('listening', () => {
     const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
     console.log('Listening on ' + bind);
 });
+
+
+require('dotenv').config();
+
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER}/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log('Connexion à MongoDB réussie !'))
+    .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 server.listen(port);

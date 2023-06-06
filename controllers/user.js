@@ -1,11 +1,18 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
-
+/**
+ * Importation des variables environnement
+ */
 require('dotenv').config();
 
 const User = require('../models/user');
 
+/**
+ * Fonction qui permet de vérifier l''existence des données
+ * params : les attributs d'un utilisateur dans le body
+ * return : une valeur qui indique si on continue le execution ou non
+ */
 const Controle = (req, res, next) => {
     if (!req.body.email) {
         res.status(400).json({ message: 'Vous devez préciser votre email' })
@@ -18,6 +25,11 @@ const Controle = (req, res, next) => {
     return true;
 }
 
+/**
+ * Fonction qui permet de retourner les informations d'un utilisateur
+ * params : le token dans le header (authorization)
+ * return : la reponse qui contient les données de l'utilisateur
+ */
 exports.findOne = (req, res, next) => {
     User.findOne({ _id: req.auth.userId })
         .then(user => {
@@ -29,6 +41,11 @@ exports.findOne = (req, res, next) => {
         .catch(error => res.status(500).json({ message: error }));
 };
 
+/**
+ * Fonction qui permet de se connecter
+ * params : l'email et le mot de passe
+ * return : la reponse qui contient le token et les informations de l'utilisateur
+ */
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then(user => {
@@ -55,6 +72,11 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({ message: error }));
 };
 
+/**
+ * Fonction qui permet de créer un compte utilisateur
+ * params : le token dans le header (authorization) et les données dans le body
+ * return : la reponse qui contient un message
+ */
 exports.create = (req, res, next) => {
     if (!Controle(req, res, next)) {
         return;
@@ -73,12 +95,17 @@ exports.create = (req, res, next) => {
                 photo: `${req.protocol}://${req.get('host')}/images/${filename}`
             });
             user.save()
-                .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
+                .then(() => res.status(200).json({ message: 'Utilisateur créé !' }))
                 .catch(error => res.status(400).json({ message: error }));
         })
         .catch(error => res.status(500).json({ message: error }));
 };
 
+/**
+ * Fonction qui permet de modifier un compte utilisateur
+ * params : le token dans le header (authorization), l'id de l'utilisateur sur l'url et les données dans le body
+ * return : la reponse qui contient un message
+ */
 exports.update = (req, res, next) => {
     if (Controle(req, res, next)) {
         if (!req.auth.admin ? req.auth.userId !== req.params.id : false) {
@@ -110,6 +137,11 @@ exports.update = (req, res, next) => {
     }
 };
 
+/**
+ * Fonction qui permet de supprimer un compte utilisateur
+ * params : le token dans le header (authorization) et l'id de l'utilisateur sur l'url
+ * return : la reponse qui contient un message
+ */
 exports.delete = (req, res, next) => {
     if (!req.auth.admin ? req.auth.userId !== req.params.id : false) {
         return res.status(400).json({ message: 'Invalid user ID!' });
@@ -130,6 +162,11 @@ exports.delete = (req, res, next) => {
         .catch(error => res.status(400).json({ message: error }));
 };
 
+/**
+ * Fonction qui permet de changer le mot de passe d'un compte utilisateur
+ * params : le token dans le header (authorization), l'id de l'utilisateur sur l'url et le nouveau mot de passe
+ * return : la reponse qui contient un message
+ */
 exports.repassword = (req, res, next) => {
     if (!req.body.password) {
         return res.status(400).json({ message: 'Vous devez préciser votre mot de passe' })
@@ -153,6 +190,11 @@ exports.repassword = (req, res, next) => {
         .catch(error => res.status(400).json({ message: error }));
 };
 
+/**
+ * Fonction qui permet d'activer/désactiver un compte utilisateur
+ * params : le token dans le header (authorization) et l'id de l'utilisateur sur l'url
+ * return : la reponse qui contient un message
+ */
 exports.status = (req, res, next) => {
     if (!req.auth.admin ? req.auth.userId !== req.params.id : false) {
         return res.status(400).json({ message: 'Invalid user ID!' });
