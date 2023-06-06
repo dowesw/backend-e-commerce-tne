@@ -7,12 +7,27 @@ https://nodejs.org/en/docs
 https://expressjs.com/
 ## mongodb
 https://www.mongodb.com/
+## jest
+https://www.freecodecamp.org/news/how-to-test-in-express-and-mongoose-apps/
 
 # usage 
+## initialise
+- clone projet
+- execute in cmd : npm install
+- create file .env with content :
+    * MONGODB_USER=...
+    * MONGODB_PASSWORD=...
+    * MONGODB_DATABASE=...
+    * MONGODB_CLUSTER=...
+
+    * JWT_SECRET_KEY=...
+
+    * MONGODB_URI_PROD=...
+    * MONGODB_URI_TEST=...
 ## run
-nodemon serve
+npm run dev
 ## test
-node test
+npm run test
 
 # tools
 ## postman
